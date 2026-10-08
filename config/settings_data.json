@@ -17,7 +17,7 @@
       "use_display_fonts": true,
       "page_width": 1440,
       "button_radius": 6,
-      "logo_width": 180,
+      "logo_width": 220,
       "show_cart_note": true
     },
     "Noir": {
@@ -36,7 +36,7 @@
       "use_display_fonts": true,
       "page_width": 1440,
       "button_radius": 6,
-      "logo_width": 180,
+      "logo_width": 220,
       "show_cart_note": true
     }
   }

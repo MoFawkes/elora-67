@@ -22,16 +22,27 @@ shopify theme check                                     # lint
 
 | Where | What |
 | --- | --- |
-| Theme settings → Logo | Upload the crown / 67 / ELORA FASHION mark as a transparent PNG (a text fallback is shown until then). |
+| Theme settings → Logo | The current Elora 67 logo (silhouette with purple swirl) is bundled as `assets/elora67-logo.webp` and used by default. Upload a logo here only to replace it. |
 | Theme settings → Colors | Purple and gold defaults match the mockup. A **Noir** (black + gold) preset is also included. |
-| Navigation → `main-menu` | Home · Shop (Women, Men, Kids, Fabrics, New Arrivals as child links) · About Us · Contact |
+| Navigation → `main-menu` | Home · Shop (Women, Men, Modest Wear, Casual Wear, New Arrivals as child links) · About Us · Contact |
 | Navigation → `footer` | Shipping, Returns, Size guide, FAQ, Privacy, Terms |
-| Products → Collections | Create Women, Men, Kids, Fabrics, New Arrivals |
+| Products → Collections | Create Women, Men, Modest Wear, Casual Wear, New Arrivals, then link the hero's **Casual wear** / **Modest wear** buttons to them |
 | Customize → Home → Collection tiles | Pick a collection and image for each tile. The Brand tile's link goes to the About page. |
 | Customize → Home → Hero banner | Upload a wide banner image (2400×1000, model on the right) plus an optional portrait image for mobile. |
 | Settings → Markets / Languages | Add currencies and languages; the header selectors appear automatically. |
 | Search & Discovery app | Add filters (size, colour, price, product type) for the collection filter panel. |
 | Settings → Domains | Point `elora67.com` at the store. |
+
+## Fix in Shopify admin (found on the live store)
+
+These are product data problems, so they show on any theme:
+
+- **Elegant Satin Cowl Neck Blouse**: the option is named `Black,Ivory,Chocolate Brown` and its values are Black / Brown / Clear. Rename the option to `Color` with values Black / Ivory / Chocolate Brown.
+- **Elora Black Tulle Statement Skirt**: the option is named `Black`. Rename it to `Color`, or add a `Size` option.
+- **Elora Satin Tie-Front Cropped Blouse**: the vendor is `My Store`. Change it to `Elora`.
+- **Collections**: the only collection is the empty "Women's Casual Wear example products". Delete it and create the collections listed above.
+- **Old sample product**: the homepage's featured product shows £19.99, which matches none of the three products. Remove the leftover sample.
+- **Homepage title**: Online Store → Preferences currently says `Elora 67 Fashion/Women's & Men's Clothing`. Consider `Elora 67 Fashion | Modest & Casual Wear for Women & Men`.
 
 ## Structure
 

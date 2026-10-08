@@ -18,7 +18,7 @@
         "brand": { "type": "brand", "settings": { "text": "<p>Timeless elegance and modern modest fashion, made for you.</p>" } },
         "shop": { "type": "menu", "settings": { "heading": "Shop", "menu": "main-menu" } },
         "help": { "type": "menu", "settings": { "heading": "Help", "menu": "footer" } },
-        "newsletter": { "type": "newsletter", "settings": { "heading": "Join the Elora circle", "text": "New arrivals, exclusive offers and styling notes." } }
+        "newsletter": { "type": "newsletter", "settings": { "heading": "Insider refinement", "text": "Join our circle for exclusive style revelations." } }
       },
       "block_order": ["brand", "shop", "help", "newsletter"],
       "settings": { "show_payment_icons": true }

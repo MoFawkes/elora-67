@@ -9,39 +9,95 @@
         "title": "Elora 67",
         "subtitle": "Fashion",
         "tagline": "Timeless Elegance | Modern Style | Made for You",
-        "button_label": "Shop now",
+        "button_label": "Casual wear",
         "button_link": "",
-        "script_text": "Fashion\nis a form\nof self-care"
+        "script_text": "Fashion\nis a form\nof self-care",
+        "button_label_2": "Modest wear",
+        "button_link_2": ""
       }
     },
     "tiles": {
       "type": "collection-list",
       "blocks": {
-        "women": { "type": "tile", "settings": { "title": "Women", "link_label": "Shop now" } },
-        "men": { "type": "tile", "settings": { "title": "Men", "link_label": "Shop now" } },
-        "kids": { "type": "tile", "settings": { "title": "Kids", "link_label": "Shop now" } },
-        "fabrics": { "type": "tile", "settings": { "title": "Fabrics", "link_label": "Shop now" } },
-        "new": { "type": "tile", "settings": { "title": "New Arrivals", "link_label": "Shop now" } },
-        "brand": { "type": "tile", "settings": { "title": "Brand", "link_label": "Our story" } }
+        "women": {
+          "type": "tile",
+          "settings": {
+            "title": "Women",
+            "link_label": "Shop now"
+          }
+        },
+        "men": {
+          "type": "tile",
+          "settings": {
+            "title": "Men",
+            "link_label": "Shop now"
+          }
+        },
+        "new": {
+          "type": "tile",
+          "settings": {
+            "title": "New Arrivals",
+            "link_label": "Shop now"
+          }
+        },
+        "brand": {
+          "type": "tile",
+          "settings": {
+            "title": "Brand",
+            "link_label": "Our story"
+          }
+        },
+        "modest": {
+          "type": "tile",
+          "settings": {
+            "title": "Modest Wear",
+            "link_label": "Shop now"
+          }
+        },
+        "casual": {
+          "type": "tile",
+          "settings": {
+            "title": "Casual Wear",
+            "link_label": "Shop now"
+          }
+        }
       },
-      "block_order": ["women", "men", "kids", "fabrics", "new", "brand"],
-      "settings": { "heading": "" }
+      "block_order": [
+        "women",
+        "men",
+        "modest",
+        "casual",
+        "new",
+        "brand"
+      ],
+      "settings": {
+        "heading": ""
+      }
     },
     "featured": {
       "type": "featured-collection",
-      "settings": { "heading": "New arrivals", "limit": 8, "columns": 4 }
+      "settings": {
+        "heading": "New launches",
+        "limit": 8,
+        "columns": 4
+      }
     },
     "story": {
       "type": "image-with-text",
       "settings": {
         "image_position": "left",
-        "eyebrow": "Our story",
-        "heading": "Modesty, crafted with elegance",
-        "text": "<p>Elora 67 brings together timeless silhouettes, rich fabrics and thoughtful coverage — for women, men and little ones who want to look and feel their best.</p>",
-        "button_label": "Discover more",
+        "eyebrow": "Elora timeless style",
+        "heading": "Artfully curated collections celebrating refined silhouettes and timeless fabric choices",
+        "text": "<p>Luxuriously smooth satin blouses crafted for fluid movement — alongside modest and casual pieces for women and men, made to be worn and loved.</p>",
+        "button_label": "Shop now",
         "button_link": ""
       }
     }
   },
-  "order": ["hero", "tiles", "featured", "story"]
+  "order": [
+    "hero",
+    "tiles",
+    "featured",
+    "story"
+  ]
 }

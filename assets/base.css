@@ -139,6 +139,9 @@ h1, h2, h3, h4 {
 }
 .button--outline-gold:hover { background: var(--color-accent); color: var(--color-accent-contrast); }
 
+.button--gold { background: linear-gradient(180deg, var(--color-accent-light), var(--color-accent)); border-color: var(--color-accent); color: var(--color-accent-contrast); }
+.button--gold:hover { background: var(--color-accent-light); color: var(--color-accent-contrast); }
+
 .button--full { width: 100%; }
 .button--small { min-height: 2rem; padding: 0.25rem 0.75rem; font-size: 0.75rem; }
 
@@ -271,25 +274,6 @@ textarea, input[type='number'], input[type='email'], input[type='password'] {
 .logo__image { width: var(--logo-width); max-width: 45vw; height: auto; }
 @media (max-width: 749px) { .logo__image { width: calc(var(--logo-width) * 0.6); } }
 
-.logo__text { display: grid; justify-items: center; line-height: 1; font-family: var(--font-display-family); }
-.logo__crown { font-size: 1.5rem; color: var(--color-accent-light); margin-bottom: -0.2rem; }
-.logo__mark {
-  font-family: var(--font-heading-family); font-style: italic; font-size: 3rem; font-weight: 700;
-  background: linear-gradient(180deg, var(--color-accent-light), var(--color-accent));
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-}
-.logo__name { font-size: 1.9rem; letter-spacing: 0.18em; margin-right: -0.18em; color: var(--color-accent); }
-.logo__sub {
-  display: flex; align-items: center; gap: 0.4rem;
-  font-size: 0.65rem; letter-spacing: 0.45em; margin-right: -0.45em; margin-top: 0.3rem; color: var(--color-accent);
-}
-.logo__sub::before, .logo__sub::after { content: ''; width: 1rem; height: 1px; background: currentColor; }
-@media (max-width: 749px) {
-  .logo__crown { font-size: 1rem; }
-  .logo__mark { font-size: 2rem; }
-  .logo__name { font-size: 1.25rem; }
-  .logo__sub { font-size: 0.5rem; }
-}
 
 /* Primary navigation */
 .primary-nav__list { display: flex; gap: 2.5rem; }
@@ -397,6 +381,8 @@ details[open] > .mobile-nav__link .icon { transform: rotate(180deg); }
 
 .hero .hero__tagline { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.25rem 0; font-size: clamp(1rem, 1.6vw, 1.35rem); margin-bottom: 2rem; }
 .hero__tagline li + li::before { content: '•'; margin: 0 0.75rem; color: var(--color-primary-contrast); }
+
+.hero__buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem 1rem; }
 
 .hero__script {
   display: none;
