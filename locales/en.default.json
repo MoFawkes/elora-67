@@ -1,0 +1,122 @@
+{
+  "accessibility": {
+    "skip_to_content": "Skip to content"
+  },
+  "general": {
+    "copyright": "All rights reserved.",
+    "error": "Something went wrong. Please try again.",
+    "main_navigation": "Main navigation",
+    "menu": "Menu",
+    "payment_methods": "Payment methods",
+    "shop_now": "Shop now",
+    "view_all": "View all",
+    "wishlist": "Wishlist",
+    "meta": {
+      "page": "Page {{ page }}",
+      "tags": "Tagged \"{{ tags }}\""
+    },
+    "pagination": {
+      "label": "Pagination",
+      "next": "Next page",
+      "previous": "Previous page"
+    },
+    "search": {
+      "title": "Search",
+      "placeholder": "Search for products...",
+      "submit": "Search",
+      "no_results": "No results found for \"{{ terms }}\". Try another search.",
+      "results_count": {
+        "one": "{{ count }} result for \"{{ terms }}\"",
+        "other": "{{ count }} results for \"{{ terms }}\""
+      }
+    }
+  },
+  "localization": {
+    "country_label": "Country / currency",
+    "language_label": "Language",
+    "update": "Update"
+  },
+  "customer": {
+    "account": "Account"
+  },
+  "newsletter": {
+    "placeholder": "Your email address",
+    "submit": "Subscribe",
+    "success": "Thank you for subscribing."
+  },
+  "collections": {
+    "all_title": "Collections",
+    "empty": "No products found. Try removing some filters."
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to bag",
+      "added_to_cart": "Added to your bag",
+      "on_sale": "Sale",
+      "placeholder_title": "Product title",
+      "price_from": "From {{ price }}",
+      "regular_price": "Regular price",
+      "sale_price": "Sale price",
+      "shipping_policy_html": "<a href=\"{{ link }}\">Shipping</a> calculated at checkout.",
+      "sold_out": "Sold out",
+      "taxes_included": "Tax included.",
+      "unavailable": "Unavailable",
+      "variant": "Variant",
+      "view_media": "View image {{ index }}",
+      "quantity": {
+        "label": "Quantity",
+        "decrease": "Decrease quantity",
+        "increase": "Increase quantity"
+      }
+    },
+    "facets": {
+      "apply": "Apply",
+      "clear_all": "Clear all",
+      "filter_and_sort": "Filter & sort",
+      "from": "From",
+      "to": "To",
+      "sort_by": "Sort by",
+      "product_count": {
+        "one": "{{ count }} product",
+        "other": "{{ count }} products"
+      }
+    }
+  },
+  "cart": {
+    "title": "Your bag",
+    "checkout": "Checkout",
+    "continue_shopping": "Continue shopping",
+    "empty": "Your bag is empty.",
+    "note": "Order note",
+    "product": "Product",
+    "quantity": "Quantity",
+    "remove": "Remove",
+    "subtotal": "Subtotal",
+    "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout.",
+    "taxes_included_shipping_at_checkout": "Tax included. Shipping calculated at checkout.",
+    "total": "Total",
+    "update": "Update"
+  },
+  "blogs": {
+    "back_to_blog": "Back to {{ title }}"
+  },
+  "templates": {
+    "404": {
+      "title": "Page not found",
+      "subtext": "The page you were looking for doesn't exist or has moved."
+    }
+  },
+  "password": {
+    "coming_soon": "Something beautiful is coming",
+    "enter": "Enter",
+    "enter_using_password": "Enter using password",
+    "password": "Password"
+  },
+  "gift_card": {
+    "title": "Your {{ value }} gift card",
+    "expired": "Expired",
+    "print": "Print",
+    "remaining": "{{ balance }} remaining",
+    "shop_link": "Start shopping"
+  }
+}

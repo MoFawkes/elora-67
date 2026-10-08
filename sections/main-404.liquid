@@ -1,0 +1,16 @@
+<section class="section">
+  <div class="page-width page-width--narrow empty-state empty-state--large">
+    <p class="eyebrow">404</p>
+    <h1 class="section-heading">{{ 'templates.404.title' | t }}</h1>
+    <p>{{ 'templates.404.subtext' | t }}</p>
+    <a href="{{ routes.all_products_collection_url }}" class="button">{{ 'cart.continue_shopping' | t }}</a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "404",
+  "class": "section-main-404",
+  "settings": []
+}
+{% endschema %}

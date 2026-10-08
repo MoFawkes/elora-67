@@ -1,0 +1,56 @@
+<section class="section search-page">
+  <div class="page-banner">
+    <div class="page-width">
+      <h1 class="page-banner__title">{{ 'general.search.title' | t }}</h1>
+      <form action="{{ routes.search_url }}" method="get" role="search" class="search-pill search-pill--light search-page__form">
+        <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.title' | t }}">
+        <input type="hidden" name="options[prefix]" value="last">
+        <button type="submit" aria-label="{{ 'general.search.submit' | t }}">{% render 'icon', name: 'search' %}</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="page-width">
+    {%- if search.performed -%}
+      {%- paginate search.results by 24 -%}
+        <div class="collection-toolbar">
+          {%- if search.filters.size > 0 -%}
+            {%- capture search_url -%}{{ routes.search_url }}?q={{ search.terms | url_encode }}&options%5Bprefix%5D=last{%- endcapture -%}
+            {% render 'facets', results: search, url: search_url %}
+          {%- endif -%}
+          <p class="collection-toolbar__count" role="status">{{ 'general.search.results_count' | t: count: search.results_count, terms: search.terms }}</p>
+        </div>
+
+        {%- if search.results_count > 0 -%}
+          <ul class="product-grid product-grid--4" role="list">
+            {%- for item in search.results -%}
+              <li>
+                {%- if item.object_type == 'product' -%}
+                  {% render 'product-card', product: item %}
+                {%- else -%}
+                  <div class="search-result">
+                    <p class="eyebrow">{{ item.object_type | capitalize }}</p>
+                    <h3 class="product-card__title"><a href="{{ item.url }}">{{ item.title | escape }}</a></h3>
+                    <p>{{ item.content | strip_html | truncatewords: 20 }}</p>
+                  </div>
+                {%- endif -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- else -%}
+          <div class="empty-state"><p>{{ 'general.search.no_results' | t: terms: search.terms }}</p></div>
+        {%- endif -%}
+
+        {% render 'pagination', paginate: paginate %}
+      {%- endpaginate -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Search results",
+  "class": "section-main-search",
+  "settings": []
+}
+{% endschema %}

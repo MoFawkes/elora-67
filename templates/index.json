@@ -1,0 +1,47 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "overlay_opacity": 35,
+        "height": "large",
+        "eyebrow": "Welcome to",
+        "title": "Elora 67",
+        "subtitle": "Fashion",
+        "tagline": "Timeless Elegance | Modern Style | Made for You",
+        "button_label": "Shop now",
+        "button_link": "",
+        "script_text": "Fashion\nis a form\nof self-care"
+      }
+    },
+    "tiles": {
+      "type": "collection-list",
+      "blocks": {
+        "women": { "type": "tile", "settings": { "title": "Women", "link_label": "Shop now" } },
+        "men": { "type": "tile", "settings": { "title": "Men", "link_label": "Shop now" } },
+        "kids": { "type": "tile", "settings": { "title": "Kids", "link_label": "Shop now" } },
+        "fabrics": { "type": "tile", "settings": { "title": "Fabrics", "link_label": "Shop now" } },
+        "new": { "type": "tile", "settings": { "title": "New Arrivals", "link_label": "Shop now" } },
+        "brand": { "type": "tile", "settings": { "title": "Brand", "link_label": "Our story" } }
+      },
+      "block_order": ["women", "men", "kids", "fabrics", "new", "brand"],
+      "settings": { "heading": "" }
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": { "heading": "New arrivals", "limit": 8, "columns": 4 }
+    },
+    "story": {
+      "type": "image-with-text",
+      "settings": {
+        "image_position": "left",
+        "eyebrow": "Our story",
+        "heading": "Modesty, crafted with elegance",
+        "text": "<p>Elora 67 brings together timeless silhouettes, rich fabrics and thoughtful coverage — for women, men and little ones who want to look and feel their best.</p>",
+        "button_label": "Discover more",
+        "button_link": ""
+      }
+    }
+  },
+  "order": ["hero", "tiles", "featured", "story"]
+}

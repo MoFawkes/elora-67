@@ -1,0 +1,19 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "fit": { "type": "collapsible", "settings": { "heading": "Size & fit", "content": "<p>Relaxed, modest fit. Model is 5'7\" and wears a size S. See our size guide for full measurements.</p>" } },
+        "care": { "type": "collapsible", "settings": { "heading": "Fabric & care", "content": "<p>Gentle cold wash or dry clean. Iron on low heat on the reverse.</p>" } },
+        "delivery": { "type": "collapsible", "settings": { "heading": "Delivery & returns", "content": "<p>Fast, tracked delivery across the UK & Europe. Free returns within 14 days.</p>" } }
+      },
+      "block_order": ["fit", "care", "delivery"],
+      "settings": { "show_dynamic_checkout": true }
+    },
+    "related": {
+      "type": "featured-collection",
+      "settings": { "heading": "You may also like", "limit": 4, "columns": 4 }
+    }
+  },
+  "order": ["main", "related"]
+}

@@ -1,0 +1,35 @@
+<section class="section">
+  <div class="page-banner"><div class="page-width"><h1 class="page-banner__title">{{ 'collections.all_title' | t }}</h1></div></div>
+  <div class="page-width">
+    {%- paginate collections by 24 -%}
+      <ul class="collection-tiles collection-tiles--grid" role="list">
+        {%- for collection in collections -%}
+          <li class="collection-tile">
+            <a href="{{ collection.url }}" class="collection-tile__link">
+              <div class="collection-tile__media">
+                {%- if collection.featured_image -%}
+                  {{ collection.featured_image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 25vw, 50vw', widths: '360, 540, 720, 900', alt: collection.title }}
+                {%- else -%}
+                  {{ 'collection-1' | placeholder_svg_tag: 'collection-tile__placeholder' }}
+                {%- endif -%}
+              </div>
+              <div class="collection-tile__content">
+                <h2 class="collection-tile__title">{{ collection.title | escape }}</h2>
+                <span class="collection-tile__cta">{{ 'general.shop_now' | t }} {% render 'icon', name: 'arrow-right' %}</span>
+              </div>
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+      {% render 'pagination', paginate: paginate %}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collections list page",
+  "class": "section-main-list-collections",
+  "settings": []
+}
+{% endschema %}

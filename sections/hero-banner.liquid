@@ -1,0 +1,70 @@
+{%- liquid
+  assign s = section.settings
+  assign taglines = s.tagline | split: '|'
+-%}
+<section class="hero hero--{{ s.height }}" style="--hero-overlay: {{ s.overlay_opacity | divided_by: 100.0 }};" {{ section.shopify_attributes }}>
+  <div class="hero__media">
+    {%- if s.image != blank -%}
+      {%- if s.image_mobile != blank -%}
+        <picture>
+          <source media="(max-width: 749px)" srcset="{{ s.image_mobile | image_url: width: 750 }} 750w, {{ s.image_mobile | image_url: width: 1100 }} 1100w">
+          {{ s.image | image_url: width: 2400 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '100vw', widths: '750, 1100, 1500, 1800, 2400', alt: s.image.alt }}
+        </picture>
+      {%- else -%}
+        {{ s.image | image_url: width: 2400 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '100vw', widths: '750, 1100, 1500, 1800, 2400', alt: s.image.alt }}
+      {%- endif -%}
+    {%- else -%}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'hero__placeholder' }}
+    {%- endif -%}
+  </div>
+
+  <div class="page-width hero__content">
+    <div class="hero__text">
+      {%- if s.eyebrow != blank -%}<p class="hero__eyebrow">{{ s.eyebrow | escape }}</p>{%- endif -%}
+      {%- if s.title != blank -%}<h2 class="hero__title gold-text">{{ s.title | escape }}</h2>{%- endif -%}
+      {%- if s.subtitle != blank -%}<p class="hero__subtitle"><span>{{ s.subtitle | escape }}</span></p>{%- endif -%}
+      {%- if s.tagline != blank -%}
+        <ul class="hero__tagline" role="list">
+          {%- for item in taglines -%}<li>{{ item | strip | escape }}</li>{%- endfor -%}
+        </ul>
+      {%- endif -%}
+      {%- if s.button_label != blank -%}
+        <a href="{{ s.button_link | default: routes.all_products_collection_url }}" class="button button--outline-gold">
+          {{ s.button_label | escape }} {% render 'icon', name: 'arrow-right' %}
+        </a>
+      {%- endif -%}
+    </div>
+
+    {%- if s.script_text != blank -%}
+      <p class="hero__script" aria-hidden="true">{{ s.script_text | escape | newline_to_br }}<br>&#9825;</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero banner",
+  "class": "section-hero",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image", "info": "2400 x 1000px recommended. Keep the subject on the right so the text stays readable." },
+    { "type": "image_picker", "id": "image_mobile", "label": "Mobile image", "info": "Optional. Portrait 750 x 1100px." },
+    { "type": "range", "id": "overlay_opacity", "label": "Overlay darkness", "min": 0, "max": 90, "step": 5, "unit": "%", "default": 35 },
+    {
+      "type": "select", "id": "height", "label": "Height", "default": "large",
+      "options": [
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" },
+        { "value": "full", "label": "Full screen" }
+      ]
+    },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Welcome to" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Elora 67" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Fashion" },
+    { "type": "text", "id": "tagline", "label": "Tagline", "info": "Separate items with |", "default": "Timeless Elegance | Modern Style | Made for You" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop now" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "textarea", "id": "script_text", "label": "Script accent text", "default": "Fashion\nis a form\nof self-care" }
+  ],
+  "presets": [{ "name": "Hero banner" }]
+}
+{% endschema %}

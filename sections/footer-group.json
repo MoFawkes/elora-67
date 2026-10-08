@@ -1,0 +1,28 @@
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "trust-bar": {
+      "type": "trust-bar",
+      "blocks": {
+        "delivery": { "type": "item", "settings": { "icon": "truck", "title": "Fast & reliable delivery", "text": "Across the UK & Europe" } },
+        "secure": { "type": "item", "settings": { "icon": "shield", "title": "Secure payments", "text": "Shop with confidence" } },
+        "quality": { "type": "item", "settings": { "icon": "diamond", "title": "Premium quality", "text": "Designed to last" } },
+        "support": { "type": "item", "settings": { "icon": "heart", "title": "Customer support", "text": "We're here to help" } }
+      },
+      "block_order": ["delivery", "secure", "quality", "support"]
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "brand": { "type": "brand", "settings": { "text": "<p>Timeless elegance and modern modest fashion, made for you.</p>" } },
+        "shop": { "type": "menu", "settings": { "heading": "Shop", "menu": "main-menu" } },
+        "help": { "type": "menu", "settings": { "heading": "Help", "menu": "footer" } },
+        "newsletter": { "type": "newsletter", "settings": { "heading": "Join the Elora circle", "text": "New arrivals, exclusive offers and styling notes." } }
+      },
+      "block_order": ["brand", "shop", "help", "newsletter"],
+      "settings": { "show_payment_icons": true }
+    }
+  },
+  "order": ["trust-bar", "footer"]
+}

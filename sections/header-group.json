@@ -1,0 +1,23 @@
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "disabled": true,
+      "settings": { "text": "Free UK delivery on orders over £75", "link": "" }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "menu": "main-menu",
+        "tagline_1": "Elegant Style",
+        "tagline_2": "Modest Fashion",
+        "tagline_3": "For Every You",
+        "show_localization": true,
+        "wishlist_url": ""
+      }
+    }
+  },
+  "order": ["announcement-bar", "header"]
+}

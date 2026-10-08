@@ -1,0 +1,24 @@
+{%- comment -%}
+  Store logo: uploaded image, or a typographic fallback in the Elora 67 style.
+{%- endcomment -%}
+{%- if settings.logo != blank -%}
+  {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio | round -%}
+  {{
+    settings.logo
+    | image_url: width: 600
+    | image_tag:
+      class: 'logo__image',
+      width: settings.logo_width,
+      height: logo_height,
+      alt: shop.name,
+      loading: 'eager',
+      sizes: '(min-width: 750px) 300px, 160px'
+  }}
+{%- else -%}
+  <span class="logo__text" aria-label="{{ shop.name }}">
+    <span class="logo__crown" aria-hidden="true">&#9813;</span>
+    <span class="logo__mark" aria-hidden="true">67</span>
+    <span class="logo__name" aria-hidden="true">Elora</span>
+    <span class="logo__sub" aria-hidden="true">Fashion</span>
+  </span>
+{%- endif -%}

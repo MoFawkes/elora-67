@@ -1,0 +1,14 @@
+<section class="section">
+  <div class="page-banner"><div class="page-width"><h1 class="page-banner__title">{{ page.title | escape }}</h1></div></div>
+  <div class="page-width page-width--narrow rte">
+    {{ page.content }}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Page",
+  "class": "section-main-page",
+  "settings": []
+}
+{% endschema %}

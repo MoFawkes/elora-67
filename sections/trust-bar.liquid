@@ -1,0 +1,56 @@
+<div class="trust-bar" {{ section.shopify_attributes }}>
+  <ul class="page-width trust-bar__list" role="list">
+    {%- for block in section.blocks -%}
+      <li class="trust-bar__item" {{ block.shopify_attributes }}>
+        {% render 'icon', name: block.settings.icon %}
+        <div>
+          <p class="trust-bar__title">{{ block.settings.title | escape }}</p>
+          {%- if block.settings.text != blank -%}<p class="trust-bar__text">{{ block.settings.text | escape }}</p>{%- endif -%}
+        </div>
+      </li>
+    {%- endfor -%}
+  </ul>
+</div>
+
+{% schema %}
+{
+  "name": "Trust bar",
+  "class": "section-trust-bar",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "truck",
+          "options": [
+            { "value": "truck", "label": "Delivery" },
+            { "value": "shield", "label": "Secure" },
+            { "value": "diamond", "label": "Quality" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "return", "label": "Returns" },
+            { "value": "globe", "label": "Globe" }
+          ]
+        },
+        { "type": "text", "id": "title", "label": "Title", "default": "Fast & reliable delivery" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Across the UK & Europe" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust bar",
+      "blocks": [
+        { "type": "item", "settings": { "icon": "truck", "title": "Fast & reliable delivery", "text": "Across the UK & Europe" } },
+        { "type": "item", "settings": { "icon": "shield", "title": "Secure payments", "text": "Shop with confidence" } },
+        { "type": "item", "settings": { "icon": "diamond", "title": "Premium quality", "text": "Designed to last" } },
+        { "type": "item", "settings": { "icon": "heart", "title": "Customer support", "text": "We're here to help" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

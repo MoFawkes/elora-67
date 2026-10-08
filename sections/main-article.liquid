@@ -1,0 +1,21 @@
+<article class="section">
+  <div class="page-banner">
+    <div class="page-width page-width--narrow">
+      <p class="eyebrow">{{ article.published_at | time_tag: format: 'date' }}</p>
+      <h1 class="page-banner__title">{{ article.title | escape }}</h1>
+    </div>
+  </div>
+  <div class="page-width page-width--narrow">
+    {%- if article.image -%}
+      <div class="article__image">
+        {{ article.image | image_url: width: 1400 | image_tag: loading: 'eager', sizes: '(min-width: 800px) 760px, 100vw', widths: '600, 900, 1400', alt: article.image.alt | default: article.title }}
+      </div>
+    {%- endif -%}
+    <div class="rte">{{ article.content }}</div>
+    <p><a href="{{ blog.url }}" class="link-arrow">{{ 'blogs.back_to_blog' | t: title: blog.title }}</a></p>
+  </div>
+</article>
+
+{% schema %}
+{ "name": "Blog post", "class": "section-main-article", "settings": [] }
+{% endschema %}

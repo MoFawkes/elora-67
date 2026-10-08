@@ -1,0 +1,162 @@
+{%- liquid
+  assign menu = section.settings.menu
+  assign header_style = ''
+  if section.settings.background_image != blank
+    assign bg_url = section.settings.background_image | image_url: width: 2400
+    assign header_style = 'background-image: url(' | append: bg_url | append: ');'
+  endif
+-%}
+<header class="site-header" style="{{ header_style }}" {{ section.shopify_attributes }}>
+  <div class="site-header__utility">
+    <div class="page-width site-header__utility-inner">
+      <ul class="site-header__taglines" role="list">
+        {%- for i in (1..3) -%}
+          {%- liquid
+            assign key = 'tagline_' | append: i
+            assign tagline = section.settings[key]
+          -%}
+          {%- if tagline != blank -%}<li>{{ tagline | escape }}</li>{%- endif -%}
+        {%- endfor -%}
+      </ul>
+
+      <div class="site-header__utility-right">
+        {%- if section.settings.show_localization -%}
+          {%- if localization.available_countries.size > 1 or localization.available_languages.size > 1 -%}
+            {%- form 'localization', class: 'localization-form', data-localization-form: '' -%}
+              {%- if localization.available_languages.size > 1 -%}
+                <label class="visually-hidden" for="HeaderLanguage">{{ 'localization.language_label' | t }}</label>
+                <div class="select select--inline">
+                  <select id="HeaderLanguage" name="language_code" data-autosubmit>
+                    {%- for language in localization.available_languages -%}
+                      <option value="{{ language.iso_code }}" {% if language.iso_code == localization.language.iso_code %}selected{% endif %}>
+                        {{ language.iso_code | upcase }}
+                      </option>
+                    {%- endfor -%}
+                  </select>
+                  {% render 'icon', name: 'chevron-down' %}
+                </div>
+              {%- endif -%}
+              {%- if localization.available_countries.size > 1 -%}
+                <label class="visually-hidden" for="HeaderCountry">{{ 'localization.country_label' | t }}</label>
+                <div class="select select--inline">
+                  <select id="HeaderCountry" name="country_code" data-autosubmit>
+                    {%- for country in localization.available_countries -%}
+                      <option value="{{ country.iso_code }}" {% if country.iso_code == localization.country.iso_code %}selected{% endif %}>
+                        {{ country.name }} ({{ country.currency.symbol }} {{ country.currency.iso_code }})
+                      </option>
+                    {%- endfor -%}
+                  </select>
+                  {% render 'icon', name: 'chevron-down' %}
+                </div>
+              {%- endif -%}
+              <noscript><button type="submit" class="button button--small">{{ 'localization.update' | t }}</button></noscript>
+            {%- endform -%}
+          {%- endif -%}
+        {%- endif -%}
+
+        <div class="site-header__icons">
+          {%- if shop.customer_accounts_enabled -%}
+            <a href="{{ routes.account_url }}" class="header-icon" aria-label="{{ 'customer.account' | t }}">{% render 'icon', name: 'account' %}</a>
+          {%- endif -%}
+          <a href="{{ routes.search_url }}" class="header-icon" aria-label="{{ 'general.search.title' | t }}">{% render 'icon', name: 'search' %}</a>
+          {%- if section.settings.wishlist_url != blank -%}
+            <a href="{{ section.settings.wishlist_url }}" class="header-icon" aria-label="{{ 'general.wishlist' | t }}">{% render 'icon', name: 'heart' %}</a>
+          {%- endif -%}
+          <a href="{{ routes.cart_url }}" class="header-icon header-icon--cart" aria-label="{{ 'cart.title' | t }}">
+            {% render 'icon', name: 'cart' %}
+            <span class="cart-count" data-cart-count {% if cart.item_count == 0 %}hidden{% endif %}>{{ cart.item_count }}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-width site-header__main">
+    <details class="mobile-nav" data-mobile-nav>
+      <summary class="header-icon mobile-nav__toggle" aria-label="{{ 'general.menu' | t }}">
+        <span class="mobile-nav__open">{% render 'icon', name: 'menu' %}</span>
+        <span class="mobile-nav__close">{% render 'icon', name: 'close' %}</span>
+      </summary>
+      <div class="mobile-nav__drawer">
+        <form action="{{ routes.search_url }}" method="get" role="search" class="search-pill search-pill--drawer">
+          <input type="search" name="q" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.title' | t }}">
+          <input type="hidden" name="options[prefix]" value="last">
+          <button type="submit" aria-label="{{ 'general.search.submit' | t }}">{% render 'icon', name: 'search' %}</button>
+        </form>
+        <ul class="mobile-nav__list" role="list">
+          {%- for link in menu.links -%}
+            <li>
+              {%- if link.links.size > 0 -%}
+                <details>
+                  <summary class="mobile-nav__link">{{ link.title | escape }} {% render 'icon', name: 'chevron-down' %}</summary>
+                  <ul class="mobile-nav__sublist" role="list">
+                    <li><a class="mobile-nav__sublink" href="{{ link.url }}">{{ 'general.view_all' | t }}</a></li>
+                    {%- for child in link.links -%}
+                      <li><a class="mobile-nav__sublink" href="{{ child.url }}">{{ child.title | escape }}</a></li>
+                    {%- endfor -%}
+                  </ul>
+                </details>
+              {%- else -%}
+                <a class="mobile-nav__link" href="{{ link.url }}" {% if link.active %}aria-current="page"{% endif %}>{{ link.title | escape }}</a>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </details>
+
+    <nav class="primary-nav" aria-label="{{ 'general.main_navigation' | t }}">
+      <ul class="primary-nav__list" role="list">
+        {%- for link in menu.links -%}
+          <li class="primary-nav__item{% if link.links.size > 0 %} primary-nav__item--has-dropdown{% endif %}">
+            <a href="{{ link.url }}" class="primary-nav__link{% if link.active or link.child_active %} is-active{% endif %}" {% if link.active %}aria-current="page"{% endif %}>
+              {{ link.title | escape }}
+              {%- if link.links.size > 0 %} {% render 'icon', name: 'chevron-down' %}{% endif -%}
+            </a>
+            {%- if link.links.size > 0 -%}
+              <ul class="primary-nav__dropdown" role="list">
+                {%- for child in link.links -%}
+                  <li><a href="{{ child.url }}" {% if child.active %}aria-current="page"{% endif %}>{{ child.title | escape }}</a></li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    {%- if request.page_type == 'index' -%}<h1 class="site-header__logo">{%- else -%}<div class="site-header__logo">{%- endif -%}
+      <a href="{{ routes.root_url }}" class="logo">{% render 'logo' %}</a>
+    {%- if request.page_type == 'index' -%}</h1>{%- else -%}</div>{%- endif -%}
+
+    <div class="site-header__search">
+      <form action="{{ routes.search_url }}" method="get" role="search" class="search-pill">
+        <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.title' | t }}">
+        <input type="hidden" name="options[prefix]" value="last">
+        <button type="submit" aria-label="{{ 'general.search.submit' | t }}">{% render 'icon', name: 'search' %}</button>
+      </form>
+    </div>
+
+    <a href="{{ routes.cart_url }}" class="header-icon header-icon--cart site-header__mobile-cart" aria-label="{{ 'cart.title' | t }}">
+      {% render 'icon', name: 'cart' %}
+      <span class="cart-count" data-cart-count {% if cart.item_count == 0 %}hidden{% endif %}>{{ cart.item_count }}</span>
+    </a>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "section-header",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu", "info": "Suggested: Home, Shop (with Women, Men, Kids, Fabrics, New Arrivals), About Us, Contact." },
+    { "type": "image_picker", "id": "background_image", "label": "Background image", "info": "Optional texture, e.g. purple leaf flourish." },
+    { "type": "header", "content": "Top bar" },
+    { "type": "text", "id": "tagline_1", "label": "Tagline 1", "default": "Elegant Style" },
+    { "type": "text", "id": "tagline_2", "label": "Tagline 2", "default": "Modest Fashion" },
+    { "type": "text", "id": "tagline_3", "label": "Tagline 3", "default": "For Every You" },
+    { "type": "checkbox", "id": "show_localization", "label": "Show language and currency selectors", "info": "Configure markets and languages in Shopify admin settings.", "default": true },
+    { "type": "url", "id": "wishlist_url", "label": "Wishlist link", "info": "Shows a heart icon when set (e.g. from a wishlist app)." }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,65 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Elora 67",
+    "theme_version": "1.0.0",
+    "theme_author": "Elora 67",
+    "theme_documentation_url": "https://elora67.com",
+    "theme_support_url": "https://elora67.com"
+  },
+  {
+    "name": "Logo & favicon",
+    "settings": [
+      { "type": "image_picker", "id": "logo", "label": "Logo", "info": "Transparent PNG of the crown + 67 + ELORA FASHION mark works best." },
+      { "type": "range", "id": "logo_width", "label": "Logo width", "min": 80, "max": 300, "step": 10, "unit": "px", "default": 180 },
+      { "type": "image_picker", "id": "favicon", "label": "Favicon", "info": "32 x 32px .png" }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      { "type": "header", "content": "Brand" },
+      { "type": "color", "id": "color_primary", "label": "Primary (deep purple)", "default": "#2a0b40" },
+      { "type": "color", "id": "color_primary_dark", "label": "Primary dark", "default": "#16051f" },
+      { "type": "color", "id": "color_primary_contrast", "label": "Text on primary", "default": "#f6eee0" },
+      { "type": "color", "id": "color_accent", "label": "Accent (gold)", "default": "#c9a14a" },
+      { "type": "color", "id": "color_accent_light", "label": "Accent highlight (light gold)", "default": "#f3d998" },
+      { "type": "color", "id": "color_accent_contrast", "label": "Text on accent", "default": "#16051f" },
+      { "type": "header", "content": "Page" },
+      { "type": "color", "id": "color_background", "label": "Background", "default": "#fbf8f3" },
+      { "type": "color", "id": "color_surface", "label": "Card surface", "default": "#ffffff" },
+      { "type": "color", "id": "color_text", "label": "Text", "default": "#1f1528" },
+      { "type": "color", "id": "color_sale", "label": "Sale price", "default": "#9b2c4a" }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      { "type": "font_picker", "id": "type_heading_font", "label": "Heading font", "default": "playfair_display_n4" },
+      { "type": "font_picker", "id": "type_body_font", "label": "Body font", "default": "assistant_n4" },
+      { "type": "checkbox", "id": "use_display_fonts", "label": "Use Cinzel + Great Vibes display fonts", "info": "Loads Cinzel (navigation, banner titles) and Great Vibes (script accents) from Google Fonts.", "default": true }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      { "type": "range", "id": "page_width", "label": "Page width", "min": 1000, "max": 1600, "step": 20, "unit": "px", "default": 1440 },
+      { "type": "range", "id": "button_radius", "label": "Button corner radius", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 6 }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      { "type": "checkbox", "id": "show_cart_note", "label": "Enable order notes", "default": true }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      { "type": "text", "id": "social_instagram_link", "label": "Instagram", "placeholder": "https://instagram.com/elora67" },
+      { "type": "text", "id": "social_tiktok_link", "label": "TikTok", "placeholder": "https://tiktok.com/@elora67" },
+      { "type": "text", "id": "social_facebook_link", "label": "Facebook", "placeholder": "https://facebook.com/elora67" },
+      { "type": "text", "id": "social_pinterest_link", "label": "Pinterest", "placeholder": "https://pinterest.com/elora67" }
+    ]
+  }
+]

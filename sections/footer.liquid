@@ -1,0 +1,97 @@
+<footer class="site-footer" {{ section.shopify_attributes }}>
+  <div class="page-width site-footer__grid">
+    {%- for block in section.blocks -%}
+      <div class="site-footer__block site-footer__block--{{ block.type }}" {{ block.shopify_attributes }}>
+        {%- case block.type -%}
+          {%- when 'brand' -%}
+            <a href="{{ routes.root_url }}" class="logo logo--footer">{% render 'logo' %}</a>
+            {%- if block.settings.text != blank -%}<div class="site-footer__text rte">{{ block.settings.text }}</div>{%- endif -%}
+          {%- when 'menu' -%}
+            {%- if block.settings.heading != blank -%}<h2 class="site-footer__heading">{{ block.settings.heading | escape }}</h2>{%- endif -%}
+            <ul class="site-footer__links" role="list">
+              {%- for link in block.settings.menu.links -%}
+                <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+              {%- endfor -%}
+            </ul>
+          {%- when 'newsletter' -%}
+            {%- if block.settings.heading != blank -%}<h2 class="site-footer__heading">{{ block.settings.heading | escape }}</h2>{%- endif -%}
+            {%- if block.settings.text != blank -%}<p class="site-footer__text">{{ block.settings.text | escape }}</p>{%- endif -%}
+            {%- form 'customer', class: 'newsletter-form', id: 'FooterNewsletter' -%}
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              {%- if form.posted_successfully? -%}
+                <p class="form-message form-message--success" role="status">{{ 'newsletter.success' | t }}</p>
+              {%- else -%}
+                {%- if form.errors -%}<p class="form-message form-message--error" role="alert">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>{%- endif -%}
+                <div class="search-pill search-pill--light">
+                  <input type="email" name="contact[email]" required autocomplete="email" placeholder="{{ 'newsletter.placeholder' | t }}" aria-label="{{ 'newsletter.placeholder' | t }}">
+                  <button type="submit" aria-label="{{ 'newsletter.submit' | t }}">{% render 'icon', name: 'arrow-right' %}</button>
+                </div>
+              {%- endif -%}
+            {%- endform -%}
+        {%- endcase -%}
+      </div>
+    {%- endfor -%}
+  </div>
+
+  <div class="page-width site-footer__bottom">
+    <ul class="social-links" role="list">
+      {%- liquid
+        assign networks = 'instagram,tiktok,facebook,pinterest' | split: ','
+      -%}
+      {%- for network in networks -%}
+        {%- assign key = 'social_' | append: network | append: '_link' -%}
+        {%- if settings[key] != blank -%}
+          <li><a href="{{ settings[key] }}" target="_blank" rel="noopener" aria-label="{{ network | capitalize }}">{% render 'icon', name: network %}</a></li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+
+    <p class="site-footer__copyright">&copy; {{ 'now' | date: '%Y' }} {{ shop.name | link_to: routes.root_url }}. {{ 'general.copyright' | t }}</p>
+
+    {%- if section.settings.show_payment_icons and shop.enabled_payment_types.size > 0 -%}
+      <ul class="payment-icons" role="list" aria-label="{{ 'general.payment_methods' | t }}">
+        {%- for type in shop.enabled_payment_types -%}
+          <li>{{ type | payment_type_svg_tag: class: 'payment-icon' }}</li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "class": "section-footer",
+  "max_blocks": 5,
+  "settings": [
+    { "type": "checkbox", "id": "show_payment_icons", "label": "Show payment icons", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "brand",
+      "name": "Brand",
+      "limit": 1,
+      "settings": [
+        { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Timeless elegance and modern modest fashion, made for you.</p>" }
+      ]
+    },
+    {
+      "type": "menu",
+      "name": "Menu",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Shop" },
+        { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer" }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Join the Elora circle" },
+        { "type": "text", "id": "text", "label": "Text", "default": "New arrivals, exclusive offers and styling notes." }
+      ]
+    }
+  ]
+}
+{% endschema %}

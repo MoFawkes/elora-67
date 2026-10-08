@@ -1,0 +1,46 @@
+<section class="section collection-page">
+  <div class="page-banner">
+    <div class="page-width">
+      <h1 class="page-banner__title">{{ collection.title | escape }}</h1>
+      {%- if section.settings.show_description and collection.description != blank -%}
+        <div class="page-banner__text rte">{{ collection.description }}</div>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <div class="page-width">
+    {%- paginate collection.products by section.settings.per_page -%}
+      <div class="collection-toolbar">
+        {% render 'facets', results: collection, url: collection.url %}
+        <p class="collection-toolbar__count">{{ 'products.facets.product_count' | t: count: collection.products_count }}</p>
+      </div>
+
+      {%- if collection.products.size > 0 -%}
+        <ul class="product-grid product-grid--{{ section.settings.columns }}" role="list">
+          {%- for product in collection.products -%}
+            <li>{% render 'product-card', product: product %}</li>
+          {%- endfor -%}
+        </ul>
+      {%- else -%}
+        <div class="empty-state">
+          <p>{{ 'collections.empty' | t }}</p>
+          <a href="{{ collection.url }}" class="button button--secondary">{{ 'products.facets.clear_all' | t }}</a>
+        </div>
+      {%- endif -%}
+
+      {% render 'pagination', paginate: paginate %}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection products",
+  "class": "section-main-collection",
+  "settings": [
+    { "type": "checkbox", "id": "show_description", "label": "Show collection description", "default": true },
+    { "type": "range", "id": "per_page", "label": "Products per page", "min": 8, "max": 48, "step": 4, "default": 24 },
+    { "type": "range", "id": "columns", "label": "Columns on desktop", "min": 2, "max": 5, "step": 1, "default": 4 }
+  ]
+}
+{% endschema %}

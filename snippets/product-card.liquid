@@ -1,0 +1,38 @@
+{%- comment -%}
+  Accepts: product (product or nil), placeholder_index (number, used when product is nil)
+{%- endcomment -%}
+{%- if product != blank -%}
+  {%- liquid
+    assign second_image = product.media[1].preview_image
+  -%}
+  <div class="product-card">
+    <a href="{{ product.url }}" class="product-card__media{% if second_image %} product-card__media--hover{% endif %}">
+      {%- if product.featured_media -%}
+        {{ product.featured_media.preview_image | image_url: width: 800 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 25vw, 50vw', widths: '360, 540, 720, 800', alt: product.featured_media.alt | default: product.title, class: 'product-card__image' }}
+        {%- if second_image -%}
+          {{ second_image | image_url: width: 800 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 25vw, 50vw', widths: '360, 540, 720, 800', alt: '', class: 'product-card__image product-card__image--secondary' }}
+        {%- endif -%}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'product-card__placeholder' }}
+      {%- endif -%}
+      {%- if product.available == false -%}
+        <span class="badge badge--muted">{{ 'products.product.sold_out' | t }}</span>
+      {%- elsif product.compare_at_price > product.price -%}
+        <span class="badge">{{ 'products.product.on_sale' | t }}</span>
+      {%- endif -%}
+    </a>
+    <div class="product-card__info">
+      {%- if product.vendor != blank and product.vendor != shop.name -%}<p class="product-card__vendor">{{ product.vendor | escape }}</p>{%- endif -%}
+      <h3 class="product-card__title"><a href="{{ product.url }}">{{ product.title | escape }}</a></h3>
+      {% render 'price', product: product, show_from: true %}
+    </div>
+  </div>
+{%- else -%}
+  <div class="product-card product-card--placeholder">
+    <div class="product-card__media">{{ 'product-' | append: placeholder_index | placeholder_svg_tag: 'product-card__placeholder' }}</div>
+    <div class="product-card__info">
+      <h3 class="product-card__title">{{ 'products.product.placeholder_title' | t }}</h3>
+      <div class="price"><span class="price__regular">{{ 4999 | money }}</span></div>
+    </div>
+  </div>
+{%- endif -%}
