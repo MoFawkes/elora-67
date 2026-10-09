@@ -14,7 +14,9 @@
         <li class="collection-tile" {{ block.shopify_attributes }}>
           <a href="{{ tile_url }}" class="collection-tile__link">
             <div class="collection-tile__media">
-              {%- if tile_image != blank -%}
+              {%- if block.settings.image == blank and block.settings.use_modest_campaign -%}
+                <img src="{{ 'elora-modest-campaign-front.png' | asset_url }}" width="1086" height="1448" loading="lazy" alt="Model wearing a burgundy long-sleeved maxi dress with uncovered hair">
+              {%- elsif tile_image != blank -%}
                 {{ tile_image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 17vw, 50vw', widths: '360, 540, 720, 900', alt: tile_title }}
               {%- else -%}
                 {{ 'collection-' | append: forloop.index | placeholder_svg_tag: 'collection-tile__placeholder' }}
@@ -46,6 +48,7 @@
       "settings": [
         { "type": "collection", "id": "collection", "label": "Collection" },
         { "type": "image_picker", "id": "image", "label": "Image", "info": "Overrides the collection image. Portrait 3:4 works best." },
+        { "type": "checkbox", "id": "use_modest_campaign", "label": "Use bundled modest campaign image", "default": false, "info": "AI-generated campaign concept. An uploaded image takes priority." },
         { "type": "text", "id": "title", "label": "Title", "info": "Defaults to the collection title." },
         { "type": "text", "id": "link_label", "label": "Link label", "default": "Shop now" },
         { "type": "url", "id": "link", "label": "Link", "info": "Defaults to the collection." }

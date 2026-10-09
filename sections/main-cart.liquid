@@ -69,6 +69,15 @@
           {%- endif -%}
 
           <div class="cart__summary">
+            <div class="cart__promotion">
+              <label for="CartDiscount">{{ 'cart.promotion_code' | t }}</label>
+              <div class="cart__promotion-controls">
+                <input id="CartDiscount" name="discount" type="text" autocomplete="off" aria-describedby="CartDiscountHelp" data-discount-input>
+                <button type="submit" name="update" class="button button--secondary" data-discount-apply>{{ 'cart.apply_code' | t }}</button>
+              </div>
+              <p id="CartDiscountHelp" class="cart__taxes">{{ 'cart.promotion_help' | t }}</p>
+              <p role="status" data-discount-status hidden></p>
+            </div>
             {%- for discount in cart.cart_level_discount_applications -%}
               <p class="cart__discount">{{ discount.title | escape }} (-{{ discount.total_allocated_amount | money }})</p>
             {%- endfor -%}

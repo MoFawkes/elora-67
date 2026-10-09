@@ -57,6 +57,9 @@
     "name": "Social media",
     "settings": [
       { "type": "text", "id": "social_instagram_link", "label": "Instagram", "placeholder": "https://instagram.com/elora67" },
+      { "type": "text", "id": "social_whatsapp_number", "label": "WhatsApp number", "default": "447405859821", "info": "Include country code, using digits only." },
+      { "type": "page", "id": "about_page", "label": "About Us page" },
+      { "type": "page", "id": "exchange_page", "label": "Exchange policy page" },
       { "type": "text", "id": "social_tiktok_link", "label": "TikTok", "placeholder": "https://tiktok.com/@elora67" },
       { "type": "text", "id": "social_facebook_link", "label": "Facebook", "placeholder": "https://facebook.com/elora67" },
       { "type": "text", "id": "social_pinterest_link", "label": "Pinterest", "placeholder": "https://pinterest.com/elora67" }

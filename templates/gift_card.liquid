@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>{{ 'gift_card.title' | t: value: gift_card.initial_value | money }} &ndash; {{ shop.name }}</title>
     {{ content_for_header }}
+    {% render 'brand-styles' %}
     {{ 'base.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'vendor/qrcode.js' | shopify_asset_url }}" defer></script>
   </head>
   <body class="template-gift-card">
     <main class="password">
       <div class="password__inner">
-        <p class="hero__eyebrow">{{ shop.name }}</p>
+        <a href="{{ routes.root_url }}" class="logo">{% render 'logo' %}</a>
         <h1 class="hero__title gold-text">{{ gift_card.initial_value | money }}</h1>
         {%- if gift_card.enabled == false or gift_card.expired -%}
           <p class="badge badge--muted">{{ 'gift_card.expired' | t }}</p>

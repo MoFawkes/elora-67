@@ -1,7 +1,7 @@
 <section class="section">
   <div class="page-banner"><div class="page-width"><h1 class="page-banner__title">{{ page.title | escape }}</h1></div></div>
   <div class="page-width page-width--narrow rte">
-    {{ page.content }}
+    {%- if page.content != blank -%}{{ page.content }}{%- else -%}{{ section.settings.content }}{%- endif -%}
   </div>
 </section>
 
@@ -9,6 +9,8 @@
 {
   "name": "Page",
   "class": "section-main-page",
-  "settings": []
+  "settings": [
+    { "type": "richtext", "id": "content", "label": "Page content", "info": "Used only when the Shopify page content is empty." }
+  ]
 }
 {% endschema %}

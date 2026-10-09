@@ -3,6 +3,43 @@
 
   var theme = window.theme || { routes: {}, strings: {} };
 
+  /* Apply codes using Shopify's locale-aware cart API. */
+  var cartForm = document.getElementById('CartForm');
+  if (cartForm) {
+    var discountInput = cartForm.querySelector('[data-discount-input]');
+    var applyCode = cartForm.querySelector('[data-discount-apply]');
+    var discountStatus = cartForm.querySelector('[data-discount-status]');
+    cartForm.addEventListener('submit', function (event) {
+      if (event.submitter !== applyCode || !window.fetch) return;
+      event.preventDefault();
+      var code = discountInput.value.trim();
+      if (!code) { discountInput.focus(); return; }
+      applyCode.disabled = true;
+      applyCode.setAttribute('aria-busy', 'true');
+      discountStatus.hidden = true;
+      fetch(theme.routes.cart_url + '/update.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ discount: code })
+      }).then(function (res) {
+        if (!res.ok) throw new Error(theme.strings.error);
+        return res.json();
+      }).then(function (cart) {
+        var applied = (cart.discount_codes || []).some(function (discount) {
+          return discount.code.toLowerCase() === code.toLowerCase() && discount.applicable;
+        });
+        if (!applied) throw new Error(theme.strings.discountNotApplicable);
+        window.location.reload();
+      }).catch(function (err) {
+        discountStatus.textContent = err.message || theme.strings.error;
+        discountStatus.hidden = false;
+      }).finally(function () {
+        applyCode.disabled = false;
+        applyCode.removeAttribute('aria-busy');
+      });
+    });
+  }
+
   /* Auto-submit forms (filters, sort, localization) */
   document.addEventListener('change', function (event) {
     var input = event.target.closest('[data-autosubmit]');

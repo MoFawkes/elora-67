@@ -34,6 +34,14 @@
   </div>
 
   <div class="page-width site-footer__bottom">
+    <ul class="site-footer__links footer-information" role="list">
+      {%- if settings.about_page != blank -%}<li><a href="{{ settings.about_page.url }}">About Us</a></li>{%- endif -%}
+      {%- if shop.refund_policy.body != blank -%}<li><a href="{{ shop.refund_policy.url }}">Return policy</a></li>{%- endif -%}
+      {%- if settings.exchange_page != blank -%}<li><a href="{{ settings.exchange_page.url }}">Exchange policy</a></li>{%- endif -%}
+      {%- if settings.social_whatsapp_number != blank -%}
+        <li><a href="https://wa.me/{{ settings.social_whatsapp_number | remove: '+' | remove: ' ' | escape }}" target="_blank" rel="noopener">WhatsApp</a></li>
+      {%- endif -%}
+    </ul>
     <ul class="social-links" role="list">
       {%- liquid
         assign networks = 'instagram,tiktok,facebook,pinterest' | split: ','

@@ -51,6 +51,7 @@
           "type": "tile",
           "settings": {
             "title": "Modest Wear",
+            "use_modest_campaign": true,
             "link_label": "Shop now"
           }
         },

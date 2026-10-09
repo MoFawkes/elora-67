@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "content": "<h2>Timeless elegance. Your own expression.</h2>\n<p>Elora 67 brings together modest silhouettes and contemporary style, with a focus on pieces that feel as good to wear as they look.</p>\n<p>From flowing dresses to versatile separates, our collections offer ways to dress for everyday moments and special occasions. Rich colours, considered details and graceful shapes define our style.</p>\n<p>We believe personal style should give you room to be yourself. Whether you prefer a relaxed look or a more polished outfit, explore Elora 67 and find pieces that fit your wardrobe.</p>\n<p>Need help choosing? Contact us on WhatsApp at <a href=\"https://wa.me/447405859821\">+44 7405 859821</a>.</p>\n"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

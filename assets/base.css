@@ -679,6 +679,10 @@ a.pagination__item:hover { border-color: var(--color-accent); }
 .cart__summary > * + * { margin-top: 0.75rem; }
 .cart__subtotal { display: flex; justify-content: flex-end; gap: 1rem; font-size: 1.25rem; }
 .cart__discount { color: var(--color-sale); }
+.cart__promotion { margin-bottom: 1.5rem; }
+.cart__promotion-controls { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+.cart__promotion-controls input { min-width: 0; flex: 1; }
+.footer-information { display: flex; flex-wrap: wrap; gap: 1rem; width: 100%; }
 .cart__taxes { font-size: 0.85rem; color: var(--color-text-muted); }
 .cart__buttons { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 0.75rem; }
 .cart__additional { display: flex; justify-content: flex-end; }

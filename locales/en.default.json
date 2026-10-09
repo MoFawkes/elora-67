@@ -95,7 +95,11 @@
     "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout.",
     "taxes_included_shipping_at_checkout": "Tax included. Shipping calculated at checkout.",
     "total": "Total",
-    "update": "Update"
+    "update": "Update",
+    "promotion_code": "Promotion code",
+    "apply_code": "Apply",
+    "promotion_help": "Enter your voucher code. Discounts depend on eligibility and cannot always be combined.",
+    "promotion_not_applicable": "This code could not be applied to your bag. Check the code and its terms, or try it at checkout."
   },
   "blogs": {
     "back_to_blog": "Back to {{ title }}"

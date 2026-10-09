@@ -44,6 +44,14 @@ These are product data problems, so they show on any theme:
 - **Old sample product**: the homepage's featured product shows £19.99, which matches none of the three products. Remove the leftover sample.
 - **Homepage title**: Online Store → Preferences currently says `Elora 67 Fashion/Women's & Men's Clothing`. Consider `Elora 67 Fashion | Modest & Casual Wear for Women & Men`.
 
+## Requested storefront updates
+
+- Shared branding now also covers gift cards; regular storefront and password pages already use the bundled logo. Shopify-hosted checkout branding is separate: Settings → Checkout → Customize, upload `assets/elora67-logo.webp` and choose matching fonts/colors.
+- WhatsApp defaults to +44 7405 859821. Change the digits-only number under Theme settings → Social media. Add the confirmed Instagram URL there too.
+- Create the approved About Us and exchange-policy pages in Shopify, then select them under Theme settings → Social media. Save the approved return policy under Settings → Policies. Footer links appear only when those resources are configured.
+- The cart has a promotion code input and Apply button using Shopify's cart API. Without JavaScript, Apply submits the cart form. Create the actual vouchers under Shopify admin → Discounts; eligibility and combinations are controlled by Shopify. Check valid, invalid, expired and ineligible codes on a store preview before publishing.
+- The revised modest category name and replacement photography are pending. Update the collection name, navigation labels and homepage tile once confirmed; upload the supplied replacement photo and additional model photos to the relevant products. Product galleries already support multiple images.
+
 ## Structure
 
 ```
