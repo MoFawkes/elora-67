@@ -18,7 +18,8 @@
       "page_width": 1440,
       "button_radius": 6,
       "logo_width": 220,
-      "show_cart_note": true
+      "show_cart_note": true,
+      "social_instagram_link": "https://www.instagram.com/elora.uk67/"
     },
     "Noir": {
       "color_primary": "#0c0a0b",

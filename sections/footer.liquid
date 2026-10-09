@@ -35,10 +35,11 @@
 
   <div class="page-width site-footer__bottom">
     {%- assign about_page = settings.about_page | default: pages['about-us'] -%}
+    {%- assign exchange_page = settings.exchange_page | default: pages['exchange-policy'] -%}
     <ul class="site-footer__links footer-information" role="list">
       {%- if about_page != blank -%}<li><a href="{{ about_page.url }}">About Us</a></li>{%- endif -%}
       {%- if shop.refund_policy.body != blank -%}<li><a href="{{ shop.refund_policy.url }}">Return policy</a></li>{%- endif -%}
-      {%- if settings.exchange_page != blank -%}<li><a href="{{ settings.exchange_page.url }}">Exchange policy</a></li>{%- endif -%}
+      {%- if exchange_page != blank -%}<li><a href="{{ exchange_page.url }}">Exchange policy</a></li>{%- endif -%}
       {%- if settings.social_whatsapp_number != blank -%}
         <li><a href="https://wa.me/{{ settings.social_whatsapp_number | remove: '+' | remove: ' ' | escape }}" target="_blank" rel="noopener">WhatsApp</a></li>
       {%- endif -%}

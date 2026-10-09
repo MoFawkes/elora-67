@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "content": "<h2>Need a different size or colour?</h2>\n<p>We handle exchanges through return-and-reorder. We recommend getting in touch first on WhatsApp at <a href=\"https://wa.me/447405859821\">+44 7405 859821</a> or by email at <a href=\"mailto:stylish.uk.fashion@gmail.com\">stylish.uk.fashion@gmail.com</a> with your order number and preferred replacement, so we can check availability.</p>\n<p>Return your original item in accordance with our <a href=\"/policies/refund-policy\">return and refund policy</a>, then place a new order for the item you want. Please contact us for the correct return address.</p>\n<p>You pay return postage when changing your mind about a size, colour or style. New orders are subject to current prices, availability and delivery charges.</p>\n<p>If the original item is faulty, damaged or not as described, please contact us for help; reasonable return costs will be covered. Your statutory cancellation and faulty-goods rights are unaffected.</p>\n"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
