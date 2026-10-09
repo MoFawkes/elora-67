@@ -122,5 +122,15 @@
     "print": "Print",
     "remaining": "{{ balance }} remaining",
     "shop_link": "Start shopping"
+  },
+  "contact": {
+    "heading": "We would love to hear from you",
+    "intro": "Have a question about an order, sizing or our collections? Send us a message below.",
+    "name": "Name",
+    "email": "Email",
+    "order": "Order number (optional)",
+    "message": "Message",
+    "send": "Send message",
+    "success": "Thank you for getting in touch. Your message has been sent."
   }
 }

@@ -99,6 +99,20 @@
     var addButton = form.querySelector('[data-add-to-cart]');
     var priceEl = section.querySelector('[data-product-price]');
     var errorEl = form.querySelector('[data-form-error]');
+    var submitting = false;
+
+    function updateAddButton(variant) {
+      addButton.disabled = submitting || !variant || !variant.available;
+      addButton.textContent = !variant ? theme.strings.unavailable :
+        (variant.available ? theme.strings.addToCart : theme.strings.soldOut);
+    }
+
+    function selectedVariant() {
+      var options = selectedOptions();
+      return data.variants.find(function (variant) {
+        return variant.options.every(function (value, i) { return value === options[i]; });
+      });
+    }
 
     section.classList.add('has-js-picker');
 
@@ -130,15 +144,14 @@
       });
 
       if (!variant) {
-        addButton.disabled = true;
-        addButton.textContent = theme.strings.unavailable;
+        select.value = '';
+        updateAddButton(null);
         return;
       }
 
       select.value = variant.id;
       priceEl.innerHTML = variant.price_html;
-      addButton.disabled = !variant.available;
-      addButton.textContent = variant.available ? theme.strings.addToCart : theme.strings.soldOut;
+      updateAddButton(variant);
       setActiveMedia(variant.featured_media_id);
 
       var url = new URL(window.location.href);
@@ -157,6 +170,9 @@
     form.addEventListener('submit', function (event) {
       if (!window.fetch) return;
       event.preventDefault();
+      var variant = selectedVariant();
+      if (submitting || !variant || !variant.available) return;
+      submitting = true;
       errorEl.hidden = true;
       addButton.setAttribute('aria-busy', 'true');
       addButton.disabled = true;
@@ -181,8 +197,9 @@
           errorEl.hidden = false;
         })
         .finally(function () {
+          submitting = false;
           addButton.removeAttribute('aria-busy');
-          addButton.disabled = false;
+          updateAddButton(selectedVariant());
         });
     });
   });

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Elora 67 — base styles
+   Elora 67 â€” base styles
    Colors and fonts come from theme settings via CSS variables (layout/theme.liquid).
    ========================================================================== */
 
@@ -380,7 +380,7 @@ details[open] > .mobile-nav__link .icon { transform: rotate(180deg); }
 .hero__subtitle::before, .hero__subtitle::after { content: ''; flex: 0 1 6rem; height: 1.5px; background: var(--color-accent); }
 
 .hero .hero__tagline { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.25rem 0; font-size: clamp(1rem, 1.6vw, 1.35rem); margin-bottom: 2rem; }
-.hero__tagline li + li::before { content: '•'; margin: 0 0.75rem; color: var(--color-primary-contrast); }
+.hero__tagline li + li::before { content: 'â€¢'; margin: 0 0.75rem; color: var(--color-primary-contrast); }
 
 .hero__buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem 1rem; }
 
@@ -723,3 +723,31 @@ a.pagination__item:hover { border-color: var(--color-accent); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
 }
+
+/* Preserve the portrait photography in the bundled banner. */
+@media (min-width: 750px) {
+ .hero--bundled .hero__media { left: 55%; }
+ .hero--bundled .hero__media img { object-position: center 20%; }
+ .hero--bundled .hero__media::after { background: linear-gradient(90deg, var(--color-primary-dark), transparent 30%); }
+ .hero--bundled .hero__text { max-width: 50%; }
+}
+@media (max-width: 749px) {
+ .hero--bundled { align-items: flex-end; min-height: 46rem; }
+ .hero--bundled .hero__media img { object-position: center top; }
+ .hero--bundled .hero__media::after { background: linear-gradient(0deg, var(--color-primary-dark), transparent 95%); }
+ .hero--bundled .hero__content { padding-top: 20rem; padding-bottom: 2rem; }
+}
+
+/* Contact page */
+.contact-page { margin-top: 2rem; }
+.contact-card { padding: clamp(1.25rem, 4vw, 3rem); border: 1px solid var(--color-border); background: var(--color-surface); }
+.contact-card h2 { margin-top: 0; }
+.contact-form { margin-top: 2rem; }
+.contact-form__row { display: grid; gap: 1.25rem; }
+.contact-form__field { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.25rem; }
+.contact-form__field input, .contact-form__field textarea { width: 100%; min-width: 0; border: 1px solid var(--color-border); border-radius: var(--radius); padding: 0.85rem 1rem; background: var(--color-background); }
+.contact-form__field textarea { resize: vertical; }
+.contact-form__field [aria-invalid='true'] { border-color: var(--color-sale); }
+.contact-card .form-message--success { color: var(--color-text); border-left: 3px solid var(--color-accent); padding: 1rem; }
+.contact-form__privacy { font-size: 0.85rem; margin-top: 1rem; }
+@media (min-width: 750px) { .contact-form__row { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

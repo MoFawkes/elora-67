@@ -11,9 +11,10 @@
         "tagline": "Timeless Elegance | Modern Style | Made for You",
         "button_label": "Casual wear",
         "button_link": "",
-        "script_text": "Fashion\nis a form\nof self-care",
+        "script_text": "",
         "button_label_2": "Modest wear",
-        "button_link_2": ""
+        "button_link_2": "",
+        "bundled_image": "elora-satin-black.jpg"
       }
     },
     "tiles": {
@@ -23,53 +24,45 @@
           "type": "tile",
           "settings": {
             "title": "Women",
-            "link_label": "Shop now"
-          }
-        },
-        "men": {
-          "type": "tile",
-          "settings": {
-            "title": "Men",
-            "link_label": "Shop now"
+            "link_label": "Shop now",
+            "bundled_image": "elora-pink-dress.jpg",
+            "link": "/collections/all"
           }
         },
         "new": {
           "type": "tile",
           "settings": {
             "title": "New Arrivals",
-            "link_label": "Shop now"
-          }
-        },
-        "brand": {
-          "type": "tile",
-          "settings": {
-            "title": "Brand",
-            "link_label": "Our story"
+            "link_label": "Shop now",
+            "bundled_image": "elora-floral-suit.jpg",
+            "link": "/collections/all"
           }
         },
         "modest": {
           "type": "tile",
           "settings": {
             "title": "Modest Wear",
-            "use_modest_campaign": true,
-            "link_label": "Shop now"
+            "link_label": "Shop now",
+            "bundled_image": "elora-modest-velvet.jpg",
+            "link": "/collections/all",
+            "use_modest_campaign": true
           }
         },
         "casual": {
           "type": "tile",
           "settings": {
             "title": "Casual Wear",
-            "link_label": "Shop now"
+            "link_label": "Shop now",
+            "bundled_image": "elora-satin-brown.jpg",
+            "link": "/collections/all"
           }
         }
       },
       "block_order": [
         "women",
-        "men",
         "modest",
         "casual",
-        "new",
-        "brand"
+        "new"
       ],
       "settings": {
         "heading": ""
@@ -89,9 +82,10 @@
         "image_position": "left",
         "eyebrow": "Elora timeless style",
         "heading": "Artfully curated collections celebrating refined silhouettes and timeless fabric choices",
-        "text": "<p>Luxuriously smooth satin blouses crafted for fluid movement — alongside modest and casual pieces for women and men, made to be worn and loved.</p>",
+        "text": "<p>Luxuriously smooth satin blouses crafted for fluid movement â€” alongside modest and casual pieces for women and men, made to be worn and loved.</p>",
         "button_label": "Shop now",
-        "button_link": ""
+        "button_link": "",
+        "bundled_image": "elora-floral-suit.jpg"
       }
     }
   },

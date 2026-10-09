@@ -2,7 +2,7 @@
   assign s = section.settings
   assign taglines = s.tagline | split: '|'
 -%}
-<section class="hero hero--{{ s.height }}" style="--hero-overlay: {{ s.overlay_opacity | divided_by: 100.0 }};" {{ section.shopify_attributes }}>
+<section class="hero hero--{{ s.height }}{% if s.image == blank and s.bundled_image != blank %} hero--bundled{% endif %}" style="--hero-overlay: {{ s.overlay_opacity | divided_by: 100.0 }};" {{ section.shopify_attributes }}>
   <div class="hero__media">
     {%- if s.image != blank -%}
       {%- if s.image_mobile != blank -%}
@@ -13,6 +13,8 @@
       {%- else -%}
         {{ s.image | image_url: width: 2400 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '100vw', widths: '750, 1100, 1500, 1800, 2400', alt: s.image.alt }}
       {%- endif -%}
+    {%- elsif s.bundled_image != blank -%}
+      <img src="{{ s.bundled_image | asset_url }}" alt="Black satin cowl-neck blouse" width="1024" height="1536" loading="eager" fetchpriority="high">
     {%- else -%}
       {{ 'lifestyle-1' | placeholder_svg_tag: 'hero__placeholder' }}
     {%- endif -%}
@@ -55,6 +57,7 @@
   "name": "Hero banner",
   "class": "section-hero",
   "settings": [
+    {"type": "text", "id": "bundled_image", "label": "Bundled image filename", "default": "elora-satin-black.jpg"},
     { "type": "image_picker", "id": "image", "label": "Image", "info": "2400 x 1000px recommended. Keep the subject on the right so the text stays readable." },
     { "type": "image_picker", "id": "image_mobile", "label": "Mobile image", "info": "Optional. Portrait 750 x 1100px." },
     { "type": "range", "id": "overlay_opacity", "label": "Overlay darkness", "min": 0, "max": 90, "step": 5, "unit": "%", "default": 35 },

@@ -1,0 +1,39 @@
+{%- assign contact_id = 'ContactForm-' | append: section_id -%}
+<div class="contact-card">
+  <h2>{{ 'contact.heading' | t }}</h2>
+  <p>{{ 'contact.intro' | t }}</p>
+  {%- form 'contact', id: contact_id, class: 'contact-form' -%}
+    {%- if form.posted_successfully? -%}
+      <p class="form-message form-message--success" role="status">{{ 'contact.success' | t }}</p>
+    {%- else -%}
+      {%- if form.errors -%}
+        <div class="form-message form-message--error" role="alert">{{ form.errors | default_errors }}</div>
+      {%- endif -%}
+      <div class="contact-form__row">
+        <div class="contact-form__field">
+          <label for="{{ contact_id }}-name">{{ 'contact.name' | t }}</label>
+          <input id="{{ contact_id }}-name" type="text" name="contact[name]" autocomplete="name" value="{{ form.name | default: customer.name | escape }}" required>
+        </div>
+        <div class="contact-form__field">
+          <label for="{{ contact_id }}-email">{{ 'contact.email' | t }}</label>
+          <input id="{{ contact_id }}-email" type="email" name="contact[email]" autocomplete="email" autocapitalize="off" spellcheck="false" value="{{ form.email | default: customer.email | escape }}" required {% if form.errors contains 'email' %}aria-invalid="true" aria-describedby="{{ contact_id }}-email-error"{% endif %}>
+          {%- if form.errors contains 'email' -%}
+            <span id="{{ contact_id }}-email-error" class="form-message form-message--error">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</span>
+          {%- endif -%}
+        </div>
+      </div>
+      <div class="contact-form__field">
+        <label for="{{ contact_id }}-order">{{ 'contact.order' | t }}</label>
+        <input id="{{ contact_id }}-order" type="text" name="contact[order_number]" value="{{ form.order_number | escape }}">
+      </div>
+      <div class="contact-form__field">
+        <label for="{{ contact_id }}-message">{{ 'contact.message' | t }}</label>
+        <textarea id="{{ contact_id }}-message" name="contact[body]" rows="7" required>{{ form.body | escape }}</textarea>
+      </div>
+      <button type="submit" class="button">{{ 'contact.send' | t }}</button>
+      {%- if shop.privacy_policy != blank -%}
+        <p class="contact-form__privacy"><a class="link" href="{{ shop.privacy_policy.url }}">{{ shop.privacy_policy.title | escape }}</a></p>
+      {%- endif -%}
+    {%- endif -%}
+  {%- endform -%}
+</div>

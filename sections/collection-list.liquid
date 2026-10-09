@@ -18,6 +18,8 @@
                 <img src="{{ 'elora-modest-campaign-front.png' | asset_url }}" width="1086" height="1448" loading="lazy" alt="Model wearing a burgundy long-sleeved maxi dress with uncovered hair">
               {%- elsif tile_image != blank -%}
                 {{ tile_image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 17vw, 50vw', widths: '360, 540, 720, 900', alt: tile_title }}
+              {%- elsif block.settings.bundled_image != blank -%}
+                <img src="{{ block.settings.bundled_image | asset_url }}" alt="{{ tile_title | escape }}" width="1024" height="1536" loading="lazy">
               {%- else -%}
                 {{ 'collection-' | append: forloop.index | placeholder_svg_tag: 'collection-tile__placeholder' }}
               {%- endif -%}
@@ -46,6 +48,7 @@
       "type": "tile",
       "name": "Tile",
       "settings": [
+        { "type": "text", "id": "bundled_image", "label": "Bundled image filename" },
         { "type": "collection", "id": "collection", "label": "Collection" },
         { "type": "image_picker", "id": "image", "label": "Image", "info": "Overrides the collection image. Portrait 3:4 works best." },
         { "type": "checkbox", "id": "use_modest_campaign", "label": "Use bundled modest campaign image", "default": false, "info": "AI-generated campaign concept. An uploaded image takes priority." },

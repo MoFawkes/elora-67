@@ -3,14 +3,17 @@
   <div class="page-width page-width--narrow rte">
     {%- if page.content != blank -%}{{ page.content }}{%- else -%}{{ section.settings.content }}{%- endif -%}
   </div>
+  {%- if section.settings.show_contact_form or page.handle == 'contact' or page.handle == 'contact-us' -%}
+    <div class="page-width page-width--narrow contact-page">
+      {% render 'contact-form', section_id: section.id %}
+    </div>
+  {%- endif -%}
 </section>
 
 {% schema %}
 {
   "name": "Page",
   "class": "section-main-page",
-  "settings": [
-    { "type": "richtext", "id": "content", "label": "Page content", "info": "Used only when the Shopify page content is empty." }
-  ]
+  "settings": [{ "type": "richtext", "id": "content", "label": "Page content", "info": "Used only when the Shopify page content is empty." },{ "type": "checkbox", "id": "show_contact_form", "label": "Show contact form", "default": false }]
 }
 {% endschema %}

@@ -4,6 +4,8 @@
     <div class="image-with-text__media">
       {%- if s.image != blank -%}
         {{ s.image | image_url: width: 1400 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 50vw, 100vw', widths: '600, 900, 1200, 1400' }}
+      {%- elsif s.bundled_image != blank -%}
+        <img src="{{ s.bundled_image | asset_url }}" alt="Floral belted blazer and matching trousers" width="1024" height="1536" loading="lazy">
       {%- else -%}
         {{ 'lifestyle-2' | placeholder_svg_tag: 'image-with-text__placeholder' }}
       {%- endif -%}
@@ -13,7 +15,7 @@
       {%- if s.heading != blank -%}<h2 class="section-heading">{{ s.heading | escape }}</h2>{%- endif -%}
       {%- if s.text != blank -%}<div class="rte">{{ s.text }}</div>{%- endif -%}
       {%- if s.button_label != blank -%}
-        <a href="{{ s.button_link | default: routes.root_url }}" class="button">{{ s.button_label | escape }}</a>
+        <a href="{{ s.button_link | default: routes.all_products_collection_url }}" class="button">{{ s.button_label | escape }}</a>
       {%- endif -%}
     </div>
   </div>
@@ -24,6 +26,7 @@
   "name": "Image with text",
   "class": "section-image-with-text",
   "settings": [
+    {"type": "text", "id": "bundled_image", "label": "Bundled image filename", "default": "elora-floral-suit.jpg"},
     { "type": "image_picker", "id": "image", "label": "Image" },
     {
       "type": "select", "id": "image_position", "label": "Image position", "default": "left",
