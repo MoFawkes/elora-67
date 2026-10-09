@@ -34,8 +34,9 @@
   </div>
 
   <div class="page-width site-footer__bottom">
+    {%- assign about_page = settings.about_page | default: pages['about-us'] -%}
     <ul class="site-footer__links footer-information" role="list">
-      {%- if settings.about_page != blank -%}<li><a href="{{ settings.about_page.url }}">About Us</a></li>{%- endif -%}
+      {%- if about_page != blank -%}<li><a href="{{ about_page.url }}">About Us</a></li>{%- endif -%}
       {%- if shop.refund_policy.body != blank -%}<li><a href="{{ shop.refund_policy.url }}">Return policy</a></li>{%- endif -%}
       {%- if settings.exchange_page != blank -%}<li><a href="{{ settings.exchange_page.url }}">Exchange policy</a></li>{%- endif -%}
       {%- if settings.social_whatsapp_number != blank -%}
